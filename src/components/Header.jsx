@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Header.css'; // Asegúrate de crear este archivo para los estilos
+import './Header.css'; 
 
 const Header = () => {
     const [darkMode, setDarkMode] = useState(false);
@@ -15,10 +15,12 @@ const Header = () => {
 
     return (
         <header className="header">
-            <h1 className="logo">Tres en raya</h1>
-            <button className="toggle-button" onClick={toggleDarkMode}>
-                {darkMode ? 'Modo Claro' : 'Modo Oscuro'}
-            </button>
+            <div className='header-container'>
+                <h1 className="logo">Tres en raya</h1>
+                <button className="toggle-button" onClick={toggleDarkMode}>
+                    {darkMode ? 'Modo Claro' : 'Modo Oscuro'}
+                </button>
+            </div>
         </header>
     );
 };
