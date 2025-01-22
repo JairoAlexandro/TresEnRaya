@@ -1,0 +1,36 @@
+header {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+}
+
+header h1 {
+    margin: 0;
+}
+header .logo {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+header .toggle-button {
+    background-color: #ffffff;
+    border: none;
+    color: #4CAF50;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header .toggle-button:hover {
+    background-color: #45a049;
+    color: white;
+}

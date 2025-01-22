@@ -16,10 +16,17 @@ function Game() {
     setXIsNext(!xIsNext);
   };
 
+  const handleReset = () => {
+    setSquares(Array(9).fill(null));
+    setXIsNext(true);
+  };
+
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
     status = 'Winner: ' + winner;
+  } else if (squares.every(square => square !== null)) {
+    status = 'Draw';
   } else {
     status = 'Next player: ' + (xIsNext ? 'X' : 'O');
   }
@@ -31,6 +38,9 @@ function Game() {
       </div>
       <div className="game-info">
         <div>{status}</div>
+        <div className="game-button">
+          <button onClick={handleReset} >Restart</button>
+        </div>
       </div>
     </div>
   );
