@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Board from './Board';
 import './Game.css';
 
 function Game() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
+  const [winner, setWinner] = useState(null);
+
+  useEffect(() => {
+    const gameWinner = calculateWinner(squares);
+    if (gameWinner) {
+      setWinner(gameWinner);
+      updateLocalStorage(gameWinner);
+    }
+  }, [squares]);
 
   const handleClick = (i) => {
     const newSquares = squares.slice();
-    if (calculateWinner(newSquares) || newSquares[i]) {
+    if (winner || newSquares[i]) {
       return;
     }
     newSquares[i] = xIsNext ? 'X' : 'O';
@@ -19,17 +28,16 @@ function Game() {
   const handleReset = () => {
     setSquares(Array(9).fill(null));
     setXIsNext(true);
+    setWinner(null);
   };
 
-  const winner = calculateWinner(squares);
-  let status;
-  if (winner) {
-    status = 'Winner: ' + winner;
-  } else if (squares.every(square => square !== null)) {
-    status = 'Draw';
-  } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
-  }
+  const updateLocalStorage = (winner) => {
+    const wins = JSON.parse(localStorage.getItem('Victorias')) || { X: 0, O: 0 };
+    wins[winner] += 1;
+    localStorage.setItem('Victorias', JSON.stringify(wins));
+  };
+
+  const status = winner ? 'Ganador: ' + winner : squares.every(square => square !== null) ? 'Empate' : 'Siguiente: ' + (xIsNext ? 'X' : 'O');
 
   return (
     <div className="game">
@@ -39,7 +47,7 @@ function Game() {
       <div className="game-info">
         <div>{status}</div>
         <div className="game-button">
-          <button onClick={handleReset} >Restart</button>
+          <button onClick={handleReset}>Restart</button>
         </div>
       </div>
     </div>

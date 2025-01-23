@@ -1,0 +1,16 @@
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer button {
+    flex: 1;
+}
+
+@media (max-width: 600px) {
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+}

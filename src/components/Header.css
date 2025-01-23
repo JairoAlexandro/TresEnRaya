@@ -1,43 +1,41 @@
 header {
-    background-color: #000000;
+    background-color: #055f53;
     color: white;
     font-size: 24px;
-    font-family: Arial, sans-serif;
+    font-family: "Sixtyfour Convergence", serif;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
 }
+
 .header-container {
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
+    margin: 20px;
     align-items: center;
 }
 
 header h1 {
     margin: 0;
-    margin-left: 10px; 
-    text-align: left;
-}
-
-header .logo {
-    font-size: 36px;
+    text-align: center;
+    font-size: 5vw; 
     font-weight: bold;
 }
 
-header .toggle-button {
-    background-color: #ffffff;
-    border: none;
-    color: #29c01c;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 6vw;
+    }
 }
+
+@media (min-width: 1200px) {
+    header h1 {
+        font-size: 3vw;
+    }
+}
+
+
+
+
+
+
